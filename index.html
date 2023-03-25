@@ -1,7 +1,394 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MrFavios</title>
+  <!-- Link al file CSS di Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Link al file CSS personalizzato -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+/* Stile per la finestra modale */
+.modal-background {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 600px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#ok-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2d6ea6;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ok-button:hover {
+  background-color: #13568c;
+}
+
+.modal-background.active {
+  display: flex;
+}
+
+#toggleBtn {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+body.dark-mode {
+  background-color: #111;
+}
+
+ .jumbotron-wrapper {
+    position: relative;
+    height: 300px; /* Altezza fissa della sezione jumbotron */
+    overflow: hidden; /* Nasconde gli elementi che sforano l'altezza */
+  }
+
+  .jumbotron-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+</style>
+
+
 <body>
 
-<h1>We are online.</h1>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" style="color: #0077B6;">MrFavios</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#about">Chi sono</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contattami</a>
+        </li>
+        <li class="nav-item">
+        <button id="toggleBtn">Tema Scuro</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- Jumbotron -->
+<div class="jumbotron-wrapper">
+  <img src="img/wallpaper.png" alt="Immagine">
+  
+  <br>
+  <div class="container">
+    <h1 class="display-4" style="color: gold; text-shadow: 2px 2px black;">Crea la tua realtà digitale</h1>
+    <div style="text-align: center;">
+      <p class="h3" id="junh3" style="text-indent: 50%; color: white; text-shadow: 1px 1px black;">"Ars longa, vita brevis"</p>
+    </div>
+  </div>
+   
+</div>
+
+  <!-- Sezione "Chi sono" -->
+  <section id="about" class="py-5">  
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <img src="img/me2.jpeg" width="600" height="400"  class="img-fluid rounded mb-4" alt="Immagine">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <h2 class="mb-3">Chi sono</h2>
+          <p>Sono uno sviluppatore 18enne appassionato di informatica da quando avevo dodici anni. Creo siti web, web application e software, utilizzando principalmente Python, C++, Java e PHP. Mi interesso anche di intelligenza artificiale. Ho iniziato come autodidatta, e ora sto conseguendo il diploma in informatica e telecomunicazioni.</p>
+          <p>Mi tengo costantemente aggiornato sulle ultime novità e mi piace lavorare a progetti personali, come quelli presenti nella sezione "Progetti Open Source" del sito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Sezione "Portfolio" -->
+  <section id="portfolio" class="py-5">
+    <div class="container">
+      <h2 class="mb-5">Progetti Open Source</h2>
+      <div class="row">
+      
+      
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+        <a href="https://github.com/mrfavios/mrfavios.github.io">
+          <img src="https://cdn.pixabay.com/photo/2017/01/29/13/21/mobile-devices-2017980_960_720.png" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: white;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Questo Sito</h1>
+        </a>
+        </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+        <a href="https://github.com/mrfavios/smart-wardrobe">
+          <img src="img/project2.png" width="300" height="175" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: orange;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Smart Wardrobe</h1>
+        </div>
+        </a>
+        </div>
+        
+        
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+          <img src="https://cdn.pixabay.com/photo/2013/07/12/13/28/flash-card-147112_960_720.png" width="300" height="175" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: white;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Coming soon</h1>
+        </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+          <img src="https://cdn.pixabay.com/photo/2013/07/12/13/28/flash-card-147112_960_720.png" width="300" height="175" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: white;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Coming soon</h1>
+        </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+          <img src="https://cdn.pixabay.com/photo/2013/07/12/13/28/flash-card-147112_960_720.png" width="300" height="175" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: white;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Coming soon</h1>
+        </div>
+        
+        </div>
+        
+        
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        
+        <div class="container">
+          <img src="https://cdn.pixabay.com/photo/2013/07/12/13/28/flash-card-147112_960_720.png" width="300" height="175" class="img-fluid rounded" alt="Immagine">
+          <h1 style="position: absolute; color: white;  top: 40%; left: 50%; transform: translate(-50%, -50%); text-align: center; text-shadow: 1px 1px black;">Coming soon</h1>
+        </div>
+        
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
+  <!-- Sezione "Contatti" -->
+  
+  <section id="contatti">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center">
+        <h2>Contatti</h2>
+        <p>Per commisionarmi un progetto</p>
+        <p>Puoi contattarmi tramite le seguenti informazioni:</p>
+        <p>Email: <a href="mailto:mrfavios@cyberservices.com">mrfavios@cyberservices.com</a></p>
+        <p>Instagram: <a href="instagram.com/mr.favios">Mr.Favios<a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+          <p>Copyleft 2023 
+          <a href="#">MrFavios</a>. Tutti i diritti riservati.</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <ul class="list-unstyled">
+            <li><a href="#" id="terms-button">Termini &amp; Condizioni</a></li>
+            <li><a href="#" id="privacy-button">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Pulsanti Termini & Condizioni e Privacy Policy -->
+
+<!-- Finestra modale -->
+<div class="modal-background" id="modal-background">
+  <div class="modal-content" id="modal-content">
+    <button id="close-modal">X</button>
+    <h2>Termini &amp; Condizioni e Privacy Policy</h2>
+    <p>
+      Il codice di questo sito web è distribuito sotto la licenza copyleft, il che significa che è possibile utilizzarlo e modificarlo liberamente a condizione che la licenza originale sia mantenuta e che venga dato il giusto credito all'autore originale. 
+      <br><br>
+      Puoi trovare il codice sorgente completo di questo sito web su GitHub: <a href="https://github.com/mrfavios">https://github.com/mrfavios</a>.
+    </p>
+    <button id="ok-button">Ok</button>
+  </div>
+</div>
+
+  </footer>
+  <!-- Script -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-core.min.js"
+    integrity="sha384-lvQrvZ9X9Kj5/O5i5YxtxgN8xWJH2sg/uIXUYlHSvkrvSR8XNfcLdty95WWIdpN4"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+
+    
+    // Seleziona gli elementi del DOM necessari
+	const modalBackground = document.getElementById('modal-background');
+	const termsButton = document.getElementById('terms-button');
+	const privacyButton = document.getElementById('privacy-button');
+	const closeModalButton = document.getElementById('close-modal');
+	const okButton = document.getElementById('ok-button');
+	const elements = document.querySelectorAll('.bg-light');
+
+	// Aggiungi event listener ai pulsanti
+	termsButton.addEventListener('click', openModal);
+	privacyButton.addEventListener('click', openModal);
+	closeModalButton.addEventListener('click', closeModal);
+	okButton.addEventListener('click', closeModal);
+
+	// Funzione per aprire la finestra modale
+	function openModal() {
+	  modalBackground.classList.add('active');
+	}
+
+	// Funzione per chiudere la finestra modale
+	function closeModal() {
+	  modalBackground.classList.remove('active');
+	}
+ 	
+ 	// Legge il valore del tema salvato nel localStorage
+	const savedTheme = localStorage.getItem('theme');
+
+	// Imposta il tema in base al valore salvato, o utilizza quello di default
+	if (savedTheme === 'dark') {
+	  activateDarkTheme();
+	} else {
+	  activateLightTheme();
+	}
+
+	toggleBtn.addEventListener("click", function() {
+	  // Imposta il tema e salva il valore nel localStorage
+	  var body = document.body;
+	  if (!body.classList.contains("dark-mode")) {
+	    body.classList.add("dark-mode");
+	    localStorage.setItem('theme', 'dark');
+	    activateDarkTheme();
+	  } else {
+	    body.classList.remove("dark-mode");
+	    localStorage.setItem('theme', 'light');
+	    activateLightTheme();
+	  }
+	  
+	});
+
+	function activateDarkTheme() {
+	  const elements = document.querySelectorAll('.bg-light');
+	  const whiteElements = document.querySelectorAll('h2, p, h4, li, label');
+	  const navlinks = document.querySelectorAll('.nav-link');
+	  const modalContent = document.getElementById('modal-content');
+
+	  elements.forEach(element => {
+	    element.classList.replace('bg-light', 'bg-dark');
+	  });
+
+	  whiteElements.forEach(element => {
+	    element.style.color = '#fff';
+	  });
+
+	  navlinks.forEach(navlink => {
+	    navlink.style.color = '#fff';
+	  });
+
+	  modalContent.style.backgroundColor = '#212529';
+	  toggleBtn.textContent = "Tema Chiaro";
+	  document.body.classList.add("dark-mode");
+	}
+
+	function activateLightTheme() {
+	  const elements = document.querySelectorAll('.bg-dark');
+	  const whiteElements = document.querySelectorAll('h2, p, h4, li, label');
+	  const navlinks = document.querySelectorAll('.nav-link');
+	  const modalContent = document.getElementById('modal-content');
+
+	  elements.forEach(element => {
+	    element.classList.replace('bg-dark', 'bg-light');
+	  });
+
+	  whiteElements.forEach(element => {
+	    element.style.color = '';
+	  });
+
+	  navlinks.forEach(navlink => {
+	    navlink.style.color = '';
+	  });
+	  
+	  const junh3 = document.getElementById('junh3');
+	  junh3.style.color = "white";
+
+	  modalContent.style.backgroundColor = 'white';
+	  toggleBtn.textContent = "Tema Scuro";
+	  document.body.classList.remove("dark-mode");
+	}
+
+
+    
+  </script>
 </body>
 </html>
+      
+      
