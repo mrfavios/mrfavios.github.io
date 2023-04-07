@@ -95,6 +95,57 @@ body.dark-mode {
     object-fit: cover;
     z-index: -1;
   }
+  
+  
+@keyframes slideInLeft{
+
+	from {
+	
+		transform: translateX(-500px);
+	
+	}
+	
+	to {
+	
+		transform: translateX(0);
+	
+	}
+
+}
+
+
+@keyframes slideInRight{
+
+	from {
+	
+		transform: translateX(500px);
+	
+	}
+	
+	to {
+	
+		transform: translateX(0);
+	
+	}
+
+}
+
+
+.heading-1{
+
+	
+	animation: slideInLeft 1s ease-in;
+
+
+}
+
+.heading-2{
+
+	
+	animation: slideInRight 1s ease-in;
+
+
+}
 
 </style>
 
@@ -141,15 +192,15 @@ body.dark-mode {
   </div>
    
 </div>
-
+<br>
   <!-- Sezione "Chi sono" -->
   <section id="about" class="py-5">  
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 whotion">
           <img src="img/me2.jpeg" width="600" height="400"  class="img-fluid rounded mb-4" alt="Immagine">
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 whotion2">
           <h2 class="mb-3">Chi sono</h2>
           <p>Sono uno sviluppatore 18enne appassionato di informatica da quando avevo dodici anni. Creo siti web, web application e software, utilizzando principalmente Python, C++, Java e PHP. Mi interesso anche di intelligenza artificiale. Ho iniziato come autodidatta, e ora sto conseguendo il diploma in informatica e telecomunicazioni.</p>
           <p>Mi tengo costantemente aggiornato sulle ultime novità e mi piace lavorare a progetti personali, come quelli presenti nella sezione "Progetti Open Source" del sito.</p>
@@ -160,7 +211,7 @@ body.dark-mode {
 
 <!-- Sezione "Servizi" -->
 <section id="services">
-  <div class="container">
+  <div class="container servicetion2">
     <h2 class="text-center mb-5">Servizi</h2>
     <div class="row">
       <div class="col-md-6 col-lg-4 mb-5">
@@ -220,7 +271,7 @@ body.dark-mode {
   <section id="projects" class="py-5">
     <div class="container">
       <h2 class="mb-5">Progetti Open Source</h2>
-      <div class="row">
+      <div class="row projectstion">
       
         
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
@@ -312,6 +363,7 @@ body.dark-mode {
     integrity="sha384-lvQrvZ9X9Kj5/O5i5YxtxgN8xWJH2sg/uIXUYlHSvkrvSR8XNfcLdty95WWIdpN4"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="viewportchecker.js"></script>
   <script>
 
     
@@ -430,6 +482,65 @@ body.dark-mode {
 	  document.body.classList.remove("dark-mode");
 	}
 
+// animazione sezione chi sono
+
+$(document).ready(function(){
+$('.whotion').viewportChecker({
+
+  classToAdd: 'heading-1',
+ 
+  offset: 100,
+ 
+  repeat: true,
+ 
+  callbackFunction: function(elem, action){}
+  });
+});
+
+$(document).ready(function(){
+$('.whotion2').viewportChecker({
+
+  classToAdd: 'heading-2',
+ 
+  offset: 100,
+ 
+  repeat: true,
+ 
+  callbackFunction: function(elem, action){}
+  });
+});
+
+// animazione sezione servizi
+
+$(document).ready(function(){
+$('.servicetion2').viewportChecker({
+
+  classToAdd: 'heading-2',
+ 
+  offset: 100,
+ 
+  repeat: true,
+ 
+  callbackFunction: function(elem, action){}
+  });
+});
+
+
+
+
+// animazione sezione progetti
+$(document).ready(function(){
+$('.projectstion').viewportChecker({
+
+  classToAdd: 'heading-1',
+ 
+  offset: 100,
+ 
+  repeat: true,
+ 
+  callbackFunction: function(elem, action){}
+  });
+});
 
     
   </script>
